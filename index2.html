@@ -2,51 +2,46 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>ویدیوهای حرفه‌ای</title>
+<title>ویدیوهای سازمان</title>
 
 <!-- Plyr CSS -->
 <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
 <style>
-/* ===== پس‌زمینه مدرن حرفه‌ای ===== */
+/* ===== پس‌زمینه گرادیانت خاکستری ===== */
 body {
     margin: 0;
     padding: 0;
     font-family: "IRANSans", sans-serif;
     min-height: 100vh;
-
-    /* گرادیانت + نویز + Glow */
-    background: radial-gradient(circle at 20% 30%, #1a2a6c, transparent 60%),
-                radial-gradient(circle at 80% 70%, #b21f1f, transparent 70%),
-                radial-gradient(circle at 50% 90%, #fdbb2d, transparent 80%),
-                linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    background-size: cover;
-    background-attachment: fixed;
-
+    background: linear-gradient(135deg, #e0e0e0, #a0a0a0);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 60px;
 }
 
-/* Glow نرم */
-.glow {
-    position: fixed;
-    width: 900px;
-    height: 900px;
-    background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
-    filter: blur(160px);
-    opacity: 0.55;
-    left: 50%;
-    top: -200px;
-    transform: translateX(-50%);
-    z-index: 0;
-    pointer-events: none;
+/* لوگو */
+.logo {
+    display: block;
+    margin: 0 auto 10px auto;
+    max-width: 150px;
+    height: auto;
+}
+
+/* نام سازمان */
+.org-name {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
 }
 
 /* کانتینر لیکویید گلس */
 .container {
     width: min(900px, 92%);
-    margin: 60px auto;
+    margin: 0 auto 60px auto;
     background: rgba(255,255,255,0.18);
     border-radius: 25px;
     padding: 40px;
@@ -61,11 +56,11 @@ body {
     text-align: center;
     font-size: 26px;
     font-weight: 700;
-    color: #fdfdfd;
+    color: #222;
     margin-bottom: 35px;
 }
 
-/* ===== ویدیو کارت شیشه‌ای ===== */
+/* ویدیو کارت شیشه‌ای */
 .video-card {
     background: rgba(255,255,255,0.25);
     padding: 22px;
@@ -121,6 +116,14 @@ body {
     transform: scale(1.06);
 }
 
+/* فوتر */
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-top: 30px;
+}
+
 /* ریسپانسیو */
 @media (max-width: 600px){
     .container { padding: 25px; }
@@ -130,8 +133,14 @@ body {
 </head>
 
 <body>
-<div class="glow"></div>
 
+<!-- لوگو -->
+<img src="logo.png" alt="لوگو" class="logo">
+
+<!-- نام سازمان -->
+<div class="org-name">نام سازمان شما</div>
+
+<!-- کانتینر اصلی -->
 <div class="container">
     <div class="title">پخش و دانلود ویدیوها</div>
 
@@ -158,6 +167,9 @@ body {
         </video>
         <a class="download-btn" href="video3.mp4" download>دانلود ویدیو 3</a>
     </div>
+
+    <!-- فوتر -->
+    <div class="footer">طراحی: نام طراح | © 2025 | لایسنس معتبر</div>
 </div>
 
 <!-- Plyr JS -->
@@ -168,11 +180,11 @@ document.querySelectorAll(".player").forEach(video => {
     wrapper.classList.add("loading");
 
     video.addEventListener("waiting", () => {
-        wrapper.classList.add("active"); // Loader نمایش داده شود
+        wrapper.classList.add("active");
     });
 
     video.addEventListener("canplay", () => {
-        wrapper.classList.remove("active"); // آماده پخش
+        wrapper.classList.remove("active");
     });
 
     video.addEventListener("playing", () => {
@@ -182,5 +194,6 @@ document.querySelectorAll(".player").forEach(video => {
     new Plyr(video);
 });
 </script>
+
 </body>
 </html>
