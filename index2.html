@@ -2,35 +2,33 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>ویدیوهای من</title>
+<title>ویدیوهای حرفه‌ای</title>
 
-<!-- Plyr (پلیر مدرن) -->
+<!-- Plyr CSS -->
 <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
 <style>
-/* ======== پس‌زمینه مدرن + نویز + نور ======== */
+/* ===== پس‌زمینه مدرن حرفه‌ای ===== */
 body {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    background: radial-gradient(circle at 30% 20%, #ffffff 0%, #dcdcdc 30%, #b9b9b9 65%, #9e9e9e 100%);
-    position: relative;
-    overflow-x: hidden;
     font-family: "IRANSans", sans-serif;
+    min-height: 100vh;
+
+    /* گرادیانت + نویز + Glow */
+    background: radial-gradient(circle at 20% 30%, #1a2a6c, transparent 60%),
+                radial-gradient(circle at 80% 70%, #b21f1f, transparent 70%),
+                radial-gradient(circle at 50% 90%, #fdbb2d, transparent 80%),
+                linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background-size: cover;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* نویز آنالوگ حرفه‌ای */
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-    opacity: 0.18;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* نور نرم بالای صفحه */
+/* Glow نرم */
 .glow {
     position: fixed;
     width: 900px;
@@ -42,9 +40,10 @@ body::after {
     top: -200px;
     transform: translateX(-50%);
     z-index: 0;
+    pointer-events: none;
 }
 
-/* ======== کانتینر لیکوئید گلس ======== */
+/* کانتینر لیکویید گلس */
 .container {
     width: min(900px, 92%);
     margin: 60px auto;
@@ -62,11 +61,11 @@ body::after {
     text-align: center;
     font-size: 26px;
     font-weight: 700;
-    color: #2e2e2e;
+    color: #fdfdfd;
     margin-bottom: 35px;
 }
 
-/* ======== باکس ویدیو شیشه‌ای ======== */
+/* ===== ویدیو کارت شیشه‌ای ===== */
 .video-card {
     background: rgba(255,255,255,0.25);
     padding: 22px;
@@ -74,6 +73,32 @@ body::after {
     margin-bottom: 30px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
     backdrop-filter: blur(12px);
+    position: relative;
+}
+
+/* Loader هنگام بافر */
+.video-card.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #fff;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 3;
+}
+
+.video-card.loading.active::after {
+    display: block;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* دکمه دانلود */
@@ -105,43 +130,57 @@ body::after {
 </head>
 
 <body>
-
 <div class="glow"></div>
 
 <div class="container">
-    <div class="title">پخش و دانلود ویدیوهای آموزشی</div>
+    <div class="title">پخش و دانلود ویدیوها</div>
 
     <!-- ویدیو 1 -->
-    <div class="video-card">
-        <video class="player" playsinline controls>
+    <div class="video-card loading">
+        <video class="player" playsinline controls preload="auto">
             <source src="video1.mp4" type="video/mp4">
         </video>
-        <a href="video1.mp4" download class="download-btn">دانلود ویدیو 1</a>
+        <a class="download-btn" href="video1.mp4" download>دانلود ویدیو 1</a>
     </div>
 
     <!-- ویدیو 2 -->
-    <div class="video-card">
-        <video class="player" playsinline controls>
+    <div class="video-card loading">
+        <video class="player" playsinline controls preload="auto">
             <source src="video2.mp4" type="video/mp4">
         </video>
-        <a href="video2.mp4" download class="download-btn">دانلود ویدیو 2</a>
+        <a class="download-btn" href="video2.mp4" download>دانلود ویدیو 2</a>
     </div>
 
     <!-- ویدیو 3 -->
-    <div class="video-card">
-        <video class="player" playsinline controls>
+    <div class="video-card loading">
+        <video class="player" playsinline controls preload="auto">
             <source src="video3.mp4" type="video/mp4">
         </video>
-        <a href="video3.mp4" download class="download-btn">دانلود ویدیو 3</a>
+        <a class="download-btn" href="video3.mp4" download>دانلود ویدیو 3</a>
     </div>
-
 </div>
 
 <!-- Plyr JS -->
 <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 <script>
-    const players = Array.from(document.querySelectorAll('.player')).map(p => new Plyr(p));
-</script>
+document.querySelectorAll(".player").forEach(video => {
+    const wrapper = video.parentElement;
+    wrapper.classList.add("loading");
 
+    video.addEventListener("waiting", () => {
+        wrapper.classList.add("active"); // Loader نمایش داده شود
+    });
+
+    video.addEventListener("canplay", () => {
+        wrapper.classList.remove("active"); // آماده پخش
+    });
+
+    video.addEventListener("playing", () => {
+        wrapper.classList.remove("active");
+    });
+
+    new Plyr(video);
+});
+</script>
 </body>
 </html>
