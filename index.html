@@ -21,6 +21,19 @@ body {
     padding-top: 60px;
 }
 
+/* کانتینر لیکویید گلس */
+.container {
+    width: min(900px, 92%);
+    margin: 0 auto 60px auto;
+    background: rgba(255,255,255,0.18);
+    border-radius: 25px;
+    padding: 40px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 10px 45px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 2;
+}
+
 /* لوگو داخل باکس */
 .logo {
     display: block;
@@ -36,19 +49,6 @@ body {
     font-weight: bold;
     color: #222;
     margin-bottom: 25px;
-}
-
-/* کانتینر لیکویید گلس */
-.container {
-    width: min(900px, 92%);
-    margin: 0 auto 60px auto;
-    background: rgba(255,255,255,0.18);
-    border-radius: 25px;
-    padding: 40px;
-    backdrop-filter: blur(16px);
-    box-shadow: 0 10px 45px rgba(0,0,0,0.15);
-    position: relative;
-    z-index: 2;
 }
 
 /* عنوان */
@@ -133,18 +133,18 @@ body {
 </head>
 
 <body>
-<!-- لوگو داخل کانتینر -->
+
+<!-- کانتینر اصلی -->
+<div class="container">
+
+    <!-- لوگو بالای ویدیوها -->
     <img src="Logo-1.png" alt="لوگو" class="logo">
 
-    <!-- نام سازمان داخل کانتینر -->
+    <!-- نام سازمان بالای ویدیوها -->
     <div class="org-name">مدیریت بحران استان سیستان و بلوچستان</div>
 
     <div class="title">پخش و دانلود ویدیوها</div>
-    
-<div class="container">
 
-    <!-- ویدیوها و فوتر ... -->
-</div> 
     <!-- ویدیو 1 -->
     <div class="video-card loading">
         <video class="player" playsinline controls preload="auto">
@@ -171,6 +171,7 @@ body {
 
     <!-- فوتر -->
     <div class="footer">طراحی: نام طراح | © 2025 | لایسنس معتبر</div>
+
 </div>
 
 <!-- Plyr JS -->
@@ -180,6 +181,7 @@ document.querySelectorAll(".player").forEach(video => {
     const wrapper = video.parentElement;
     wrapper.classList.add("loading");
 
+    // نمایش loader هنگام بافرینگ
     video.addEventListener("waiting", () => {
         wrapper.classList.add("active");
     });
@@ -192,6 +194,7 @@ document.querySelectorAll(".player").forEach(video => {
         wrapper.classList.remove("active");
     });
 
+    // فعال کردن Plyr
     new Plyr(video);
 });
 </script>
