@@ -21,23 +21,6 @@ body {
     padding-top: 60px;
 }
 
-/* لوگو */
-.logo {
-    display: block;
-    margin: 0 auto 10px auto;
-    max-width: 150px;
-    height: auto;
-}
-
-/* نام سازمان */
-.org-name {
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
-}
-
 /* کانتینر لیکویید گلس */
 .container {
     width: min(900px, 92%);
@@ -49,6 +32,22 @@ body {
     box-shadow: 0 10px 45px rgba(0,0,0,0.15);
     position: relative;
     z-index: 2;
+}
+
+/* لوگو داخل باکس */
+.logo {
+    display: block;
+    margin: 0 auto 15px auto; /* کمی فاصله بیشتر زیر لوگو */
+    max-width: 200px; /* بزرگ‌تر از 120px */
+    height: auto;
+}
+/* نام سازمان داخل باکس */
+.org-name {
+    text-align: center;
+    font-size: 28px;       /* بزرگ‌تر از 20px */
+    font-weight: 900;      /* پررنگ‌تر */
+    color: #111;           /* کمی تیره‌تر برای کنتراست */
+    margin-bottom: 30px;   /* فاصله بیشتر از ویدیوها */
 }
 
 /* عنوان */
@@ -115,15 +114,37 @@ body {
     background: #fff;
     transform: scale(1.06);
 }
-
+ /* تکس */   
+.text-box {
+    background: rgba(255,255,255,0.25);
+    padding: 25px 28px;
+    border-radius: 20px;
+    margin: 40px 0 30px 0;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    backdrop-filter: blur(14px);
+    line-height: 2.1;
+    font-size: 18px;
+    font-weight: 500;
+    color: #222;
+    text-align: justify;
+    border-right: 6px solid rgba(0,0,0,0.18);
+}
+.text-box h3 {
+    margin-top: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 14px;
+    text-align: right;
+}
 /* فوتر */
 .footer {
     text-align: center;
-    font-size: 14px;
-    color: #555;
-    margin-top: 30px;
+    font-size: 16px;       /* بزرگ‌تر از 14px */
+    font-weight: 600;      /* کمی پررنگ‌تر */
+    color: #222;           /* پررنگ‌تر */
+    margin-top: 40px;      /* فاصله بیشتر از آخرین ویدیو */
 }
-
 /* ریسپانسیو */
 @media (max-width: 600px){
     .container { padding: 25px; }
@@ -134,22 +155,21 @@ body {
 
 <body>
 
-<!-- لوگو -->
-<img src="logo.png" alt="لوگو" class="logo">
-
-<!-- نام سازمان -->
-<div class="org-name">نام سازمان شما</div>
-
 <!-- کانتینر اصلی -->
 <div class="container">
-    <div class="title">پخش و دانلود ویدیوها</div>
+
+    <!-- لوگو بالای ویدیوها -->
+    <img src="Logo-1.png" alt="لوگو" class="logo">
+
+    <!-- نام سازمان بالای ویدیوها -->
+    <div class="org-name">مدیریت بحران استان سیستان و بلوچستان</div>
 
     <!-- ویدیو 1 -->
     <div class="video-card loading">
         <video class="player" playsinline controls preload="auto">
-            <source src="video1.mp4" type="video/mp4">
+            <source src="video3.mp4" type="video/mp4">
         </video>
-        <a class="download-btn" href="video1.mp4" download>دانلود ویدیو 1</a>
+        <a class="download-btn" href="https://1drv.ms/v/c/67a7c637ebb341b1/EaSKo_xgjQREr_mpPZXfF0YBVF4v0Jn2Qbgz486B-I9hpg" download>دانلود ویدیو 1</a>
     </div>
 
     <!-- ویدیو 2 -->
@@ -157,19 +177,60 @@ body {
         <video class="player" playsinline controls preload="auto">
             <source src="video2.mp4" type="video/mp4">
         </video>
-        <a class="download-btn" href="video2.mp4" download>دانلود ویدیو 2</a>
+        <a class="download-btn" href="https://1drv.ms/v/c/67a7c637ebb341b1/EQEMpBQbZ6JHhQws-tTb5a4BgrBgt-Il-j0wvNMeAwBVFA" download>دانلود ویدیو 2</a>
     </div>
 
     <!-- ویدیو 3 -->
     <div class="video-card loading">
         <video class="player" playsinline controls preload="auto">
-            <source src="video3.mp4" type="video/mp4">
+            <source src="video1.mp4" type="video/mp4">
         </video>
-        <a class="download-btn" href="video3.mp4" download>دانلود ویدیو 3</a>
+        <a class="download-btn" href="https://1drv.ms/v/c/67a7c637ebb341b1/EVwMtYn_2bZLjb4lEl12l48Bisjb4tFseYZ6RODgrF9x4Q" download>دانلود ویدیو 3</a>
     </div>
 
+<!-- باکس متن پس از 3 ویدیو -->
+<div class="text-box">
+    <h3>گزارش جلسه هماهنگی مانور زلزله</h3>
+
+    <p>
+        ⭕️ <strong>برگزاری جلسه هماهنگی مانور تمام‌عیار زلزله در استان؛ تأکید بر افزایش آمادگی و هماهنگی دستگاه‌های اجرایی</strong>
+    </p>
+
+    <p>
+        جلسه هماهنگی برگزاری مانور تمام‌عیار زلزله در استان سیستان و بلوچستان، با حضور مجید محبی،
+        مدیرکل مدیریت بحران استان و نمایندگان دستگاه‌های اجرایی عضو ستاد مدیریت بحران، امروز در سالن جلسات این اداره کل برگزار شد.
+        هدف اصلی این نشست، تشریح سناریوی مانور، تبیین شرح وظایف و هماهنگی نحوه مشارکت دستگاه‌های اجرایی
+        برای ارتقای توان عملیاتی نیروهای عضو و مدیریت شرایط اضطراری هنگام وقوع حوادث و مخاطرات طبیعی بود.
+    </p>
+
+    <p>
+        این جلسه براساس ابلاغ دستورالعمل برگزاری مانورهای آمادگی مدیریت بحران به نام سردار شهید حاج احمد کاظمی برگزار گردید.
+        در این نشست، محبی ضمن توضیح ابعاد مختلف سناریوی مانور و تشریح وظایف دستگاه‌های مشارکت‌کننده،
+        بر اهمیت اجرای دقیق تمرین‌ها براساس سناریوی مکتوب ارائه شده به نمایندگان دستگاه‌ها تأکید کرد.
+    </p>
+
+    <p>
+        محبی اظهار داشت که این مانور با اهدافی همچون افزایش هماهنگی میان تیم‌ها و سازمان‌های درگیر،
+        شناسایی نقاط ضعف احتمالی، رفع کاستی‌ها از طریق ارزیابی عملکرد نیروهای عملیاتی،
+        و نحوه به‌کارگیری تجهیزات و امکانات در کمترین زمان ممکن طراحی شده است.
+        وی همچنین عنوان کرد که این مانور بر هم‌افزایی و تعامل بین‌سازمانی مبتنی بر تمرین‌های دورمیزی و میدانی تمرکز دارد.
+    </p>
+
+    <p>
+        محبی با اشاره به خطرات طبیعی به‌ویژه زلزله که همواره استان را تهدید می‌کند، افزود:
+        «برگزاری چنین مانورهایی ضروری است تا بتوانیم در شرایط واقعی، پاسخ سریع، دقیق و مؤثر داشته باشیم.
+        این جلسه گامی مهم در مسیر ارتقای هماهنگی و آمادگی حداکثری دستگاه‌های اجرایی استان بود.»
+    </p>
+
+    <p>
+        مدیرکل مدیریت بحران استان در پایان خاطرنشان کرد که این مانور بخشی از برنامه‌های ملی سازمان مدیریت بحران کشور است
+        و اجرای موفق آن می‌تواند سطح آمادگی استان در برابر بلایای طبیعی را به‌طور قابل توجهی افزایش دهد.
+    </p>
+</div>
+    
     <!-- فوتر -->
-    <div class="footer">طراحی: نام طراح | © 2025 | لایسنس معتبر</div>
+    <div class="footer">طراحی: مهندس طاها سرگزی | © 2025 |تمام حقوق محفوظ است.استفاده ، بازتوزیع یا کپی بدون اجازه صریح ممنوع است </div>
+
 </div>
 
 <!-- Plyr JS -->
@@ -179,6 +240,7 @@ document.querySelectorAll(".player").forEach(video => {
     const wrapper = video.parentElement;
     wrapper.classList.add("loading");
 
+    // نمایش loader هنگام بافرینگ
     video.addEventListener("waiting", () => {
         wrapper.classList.add("active");
     });
@@ -191,6 +253,7 @@ document.querySelectorAll(".player").forEach(video => {
         wrapper.classList.remove("active");
     });
 
+    // فعال کردن Plyr
     new Plyr(video);
 });
 </script>
